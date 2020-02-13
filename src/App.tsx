@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
+import { Loading } from './components/Loading';
 
 const App = () => {
   return (
-    <div className="App">
-    </div>
+    <Loading />
   );
-}
+} 
 
 export default App;
