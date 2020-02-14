@@ -19,7 +19,9 @@ export const useUsersLoad = (pageNumber: number) => {
       cancelToken: new axios.CancelToken(c => (cancel = c))
     })
       .then(res => {
-        setUsers(res.data.data);
+        setUsers(prevUsers => {
+          return [...prevUsers, ...res.data.data]
+        });
         setHasMore(res.data.total_pages > pageNumber);
         setLoading(false);
       })
