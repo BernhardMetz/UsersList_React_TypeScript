@@ -5,18 +5,15 @@ interface Props {
   avatarURL: string;
   firstName: string;
   lastName: string;
+  refElement?: React.Ref<HTMLDivElement>;
 }
 
-export const ListItem: React.FC<Props> = ({
-  avatarURL,
-  firstName,
-  lastName
-}) => {
+export const ListItem: React.FC<Props> = props => {
   return (
-    <div className="list-item">
-      <img src={avatarURL} alt="avatar" />
+    <div ref={props.refElement} className="list-item">
+      <img src={props.avatarURL} alt="avatar" />
       <span>
-        {firstName} {lastName}
+        {props.firstName} {props.lastName}
       </span>
     </div>
   );
