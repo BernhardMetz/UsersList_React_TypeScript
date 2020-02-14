@@ -1,20 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { ListItem } from "./ListItem";
 import { useUsersLoad } from "../hooks/useUsersLoad";
-
-interface User {
-  id: number;
-  avatar: string;
-  first_name: string;
-  last_name: string;
-}
-
-interface HookData {
-  users: User[];
-  loading: boolean;
-  error: boolean;
-  hasMore: boolean;
-}
+import { HookData } from "../interfaces/types";
 
 export const UsersList: React.FC = () => {
   const [pgNum, setPgNum] = useState(1);

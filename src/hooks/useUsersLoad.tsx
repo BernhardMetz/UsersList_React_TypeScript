@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { User } from "../interfaces/types";
 
 export const useUsersLoad = (pageNumber: number) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
