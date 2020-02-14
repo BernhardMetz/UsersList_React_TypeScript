@@ -1,13 +1,7 @@
-import React from 'react'
+import React from "react";
 
-interface Props {
-
-}
+interface Props { }
 
 export const Users: React.FC<Props> = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return <div></div>;
+};
