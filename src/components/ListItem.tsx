@@ -1,16 +1,23 @@
 import React from "react";
-import "../styles/userlist.css";
+import "../styles/userslist.css";
 
-interface Props { }
+interface Props {
+  avatarURL: string;
+  firstName: string;
+  lastName: string;
+}
 
-export const ListItem: React.FC<Props> = () => {
+export const ListItem: React.FC<Props> = ({
+  avatarURL,
+  firstName,
+  lastName
+}) => {
   return (
     <div className="list-item">
-      <img
-        src="https://s3.amazonaws.com/uifaces/faces/twitter/follettkyle/128.jpg"
-        alt="avatar"
-      />
-      <span>Michaelddddd Lawson</span>
+      <img src={avatarURL} alt="avatar" />
+      <span>
+        {firstName} {lastName}
+      </span>
     </div>
   );
 };
