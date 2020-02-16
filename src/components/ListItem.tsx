@@ -1,6 +1,6 @@
-import React from "react";
-import "../styles/userslist.css";
-import { ItemProps } from "../interfaces/types";
+import React from "react"
+import "../styles/userslist.css"
+import { ItemProps } from "../interfaces/types"
 
 
 export const ListItem: React.FC<ItemProps> = props => {

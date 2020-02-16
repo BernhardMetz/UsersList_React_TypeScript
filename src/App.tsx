@@ -1,7 +1,7 @@
-import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
-import allReducers from './store/reducers';
-import { Provider } from 'react-redux';
+import React from 'react'
+import { createStore, applyMiddleware } from 'redux'
+import allReducers from './store/reducers'
+import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import { Home } from './components/Home'
 

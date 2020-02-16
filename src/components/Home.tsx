@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { Loading } from './Loading'
 import { UsersList } from './UsersList'
-import * as Actions from '../store/actions';
-import { useDispatch } from 'react-redux';
+import * as Actions from '../store/actions'
 
 
 export const Home: React.FC = () => {

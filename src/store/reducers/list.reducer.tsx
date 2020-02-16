@@ -42,4 +42,4 @@ const usersListReducer = (state = initialState, action: ActionType): ListState =
   }
 }
 
-export default usersListReducer;
+export default usersListReducer

@@ -1,5 +1,6 @@
-import React from "react";
-import "../styles/loading.css";
+import React from "react"
+import "../styles/loading.css"
+
 
 export const Loading: React.FC = () => {
 

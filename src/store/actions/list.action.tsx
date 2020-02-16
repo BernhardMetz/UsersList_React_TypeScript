@@ -1,7 +1,8 @@
-import { ActionType } from '../../interfaces/types';
-import { GET_USERS, ERROR_IN_GET_USERS, INCREASE_PAGE_NUM } from '../../interfaces/consts';
-import axios from "axios";
-import { Dispatch } from 'redux';
+import { Dispatch } from 'redux'
+import axios from "axios"
+import { ActionType } from '../../interfaces/types'
+import { GET_USERS, ERROR_IN_GET_USERS, INCREASE_PAGE_NUM } from '../../interfaces/consts'
+
 
 export const getUsers = (pageNumber: number) => {
   const url = "https://reqres.in/api/users?page=" + pageNumber
@@ -18,7 +19,7 @@ export const getUsers = (pageNumber: number) => {
           type: ERROR_IN_GET_USERS,
           payload: err
         })
-      });
+      })
   }
 }
 

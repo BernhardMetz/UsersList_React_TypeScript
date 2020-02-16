@@ -1,1 +1,1 @@
-export * from './list.action';
+export * from './list.action'
