@@ -1,31 +1,46 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { ListItem } from "./ListItem";
-import { useUsersLoad } from "../hooks/useUsersLoad";
-import { HookData } from "../interfaces/types";
+import { StateType, ListState } from "../interfaces/types";
 import "../styles/userslist.css";
+import * as Actions from '../store/actions';
+import { useDispatch } from 'react-redux';
+
 
 export const UsersList: React.FC = () => {
-  const [pgNum, setPgNum] = useState(1);
+
+  const dispatch = useDispatch()
   let observer = useRef<IntersectionObserver>();
-  let hookRes: HookData = useUsersLoad(pgNum);
+  let listInfo = useSelector<StateType, ListState>(state => state.usersListReducer)
+
+  useEffect(() => {
+    if (listInfo.pageNumber > 1) {
+      dispatch(Actions.getUsers(listInfo.pageNumber))
+    }
+  }, [listInfo.pageNumber, dispatch])
+
   const lastUserElementRef = useCallback(
     node => {
-      if (hookRes.loading) return;
-      if (observer.current) observer.current.disconnect();
+      if (listInfo.loading)
+        return;
+      if (observer.current)
+        observer.current.disconnect();
       observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && hookRes.hasMore)
-          setPgNum(prevPgNum => prevPgNum + 1);
+        if (entries[0].isIntersecting && listInfo.hasMore)
+          dispatch(Actions.increasePageNumber())
       });
-      if (node) observer.current.observe(node);
+      if (node)
+        observer.current.observe(node);
     },
-    [hookRes.hasMore, hookRes.loading]
+    [listInfo.hasMore, listInfo.loading, dispatch]
   );
+
   return (
     <div>
       <div className="list-body">
         <div className="list-header">Users</div>
-        {hookRes.users.map((user, index) => {
-          if (hookRes.users.length === index + 1)
+        {listInfo.users.map((user, index) => {
+          if (listInfo.users.length === index + 1)
             return (
               <ListItem
                 key={user.id}
@@ -45,9 +60,9 @@ export const UsersList: React.FC = () => {
               />
             );
         })}
-        {hookRes.loading && <div className="list-footer">Loading...</div>}
-        {hookRes.error && <div className="list-footer">Error</div>}
-        {!hookRes.hasMore && <div className="list-footer">No more users</div>}
+        {!listInfo.error && listInfo.loading && <div className="list-footer">Loading...</div>}
+        {!listInfo.loading && listInfo.error && <div className="list-footer">Error</div>}
+        {!listInfo.loading && !listInfo.hasMore && <div className="list-footer">No more users</div>}
       </div>
     </div>
   );

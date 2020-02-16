@@ -1,22 +1,30 @@
 import { ActionType } from '../../interfaces/types';
-import { GET_USERS } from '../../interfaces/consts';
+import { GET_USERS, ERROR_IN_GET_USERS, INCREASE_PAGE_NUM } from '../../interfaces/consts';
 import axios from "axios";
-import { Dispatch } from 'react';
+import { Dispatch } from 'redux';
 
 export const getUsers = (pageNumber: number) => {
-  let req = axios({
-    method: "GET",
-    url: "https://reqres.in/api/users",
-    params: { page: pageNumber },
-  })
-  return (dispatch: Dispatch<any>) => {
+  const url = "https://reqres.in/api/users?page=" + pageNumber
+  let req = axios.get(url)
+  return (dispatch: Dispatch<ActionType>) => {
     req.then(res => {
       dispatch({
         type: GET_USERS,
         payload: res.data
       })
-    }).catch(err => {
-      dispatch({})
-    });
+    })
+      .catch(err => {
+        dispatch({
+          type: ERROR_IN_GET_USERS,
+          payload: err
+        })
+      });
   }
+}
+
+export const increasePageNumber = () => {
+  return (dispatch: Dispatch<ActionType>) => dispatch({
+    type: INCREASE_PAGE_NUM,
+    payload: null
+  })
 }

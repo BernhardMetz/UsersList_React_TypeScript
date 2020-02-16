@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-import { UsersList } from './components/UsersList';
-import { Loading } from './components/Loading';
-import { createStore } from 'redux';
+import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
 import allReducers from './store/reducers';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk'
+import { Home } from './components/Home'
 
-const store = createStore(allReducers)
+
+const store = createStore(allReducers, applyMiddleware(thunk))
 
 const App = () => {
-  const [loading, setLoading] = useState(true)
-  let timer = setInterval(() => {
-    setLoading(false)
-  }, 3000);
-  if (!loading)
-    clearInterval(timer)
   return (
     <Provider store={store}>
-      {loading && <Loading />}
-      {!loading && <UsersList />}
+      <Home />
     </Provider>
   );
 };
