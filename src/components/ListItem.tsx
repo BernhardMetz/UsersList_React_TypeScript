@@ -1,14 +1,8 @@
 import React from "react";
 import "../styles/userslist.css";
+import { ItemProps } from "../interfaces/types";
 
-interface Props {
-  avatarURL: string;
-  firstName: string;
-  lastName: string;
-  refElement?: React.Ref<HTMLDivElement>;
-}
-
-export const ListItem: React.FC<Props> = props => {
+export const ListItem: React.FC<ItemProps> = props => {
   return (
     <div ref={props.refElement} className="list-item">
       <img src={props.avatarURL} alt="avatar" />

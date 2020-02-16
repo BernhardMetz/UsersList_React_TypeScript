@@ -1,15 +1,9 @@
-body {
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .list-body {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
   max-width: 800px;
-  margin: 0 0 20px 0;
+  margin: 0 auto 20px auto;
+  animation: fade-in 0.5s linear;
 }
 
 .list-header {
@@ -21,6 +15,7 @@ body {
   font-weight: 500;
   color: #1D1D1D;
   border-bottom: 1px solid darkgray;
+  border-radius: 5px 5px 0 0;
 }
 
 .list-footer {
@@ -37,7 +32,6 @@ body {
   margin: 0 1.5em 0 1.5em;
   padding: 1em 0 1em 0;
   border-bottom: 1px solid darkgray;
-  min-width: 300px;
   max-width: 800px;
 }
 
@@ -47,7 +41,16 @@ body {
 }
 
 .list-item span {
-  margin: auto 0 auto 10px;
+  margin: auto 0 auto 20px;
   font-size: 2em;
   color: #1D1D1D;
+}
+
+@keyframes fade-in {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }

@@ -12,3 +12,23 @@ export interface HookData {
   error: boolean;
   hasMore: boolean;
 }
+
+export interface ItemProps {
+  avatarURL: string;
+  firstName: string;
+  lastName: string;
+  refElement?: React.Ref<HTMLDivElement>;
+}
+
+export interface ListState {
+  loading: number
+  pageNumber: number
+  usersPerPage: number
+  totalUsers: number
+  users: User[]
+}
+
+export interface ActionType {
+  type: string,
+  payload: any
+}

@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import { ListItem } from "./ListItem";
 import { useUsersLoad } from "../hooks/useUsersLoad";
 import { HookData } from "../interfaces/types";
+import "../styles/userslist.css";
 
 export const UsersList: React.FC = () => {
   const [pgNum, setPgNum] = useState(1);
