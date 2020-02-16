@@ -26,10 +26,18 @@
   color: #1D1D1D;
 }
 
+.list-item-box {
+  padding: 0 1.5em 0 1.5em
+}
+
+.list-item-box:hover {
+  background-color:rgb(211, 227, 241);
+  cursor: pointer;
+}
+
 .list-item {
   display: flex;
   height: 100px;
-  margin: 0 1.5em 0 1.5em;
   padding: 1em 0 1em 0;
   border-bottom: 1px solid darkgray;
   max-width: 800px;
@@ -38,6 +46,7 @@
 .list-item img {
   width: 100px;
   border-radius: 50%;
+  background-color: lightgray;
 }
 
 .list-item span {
