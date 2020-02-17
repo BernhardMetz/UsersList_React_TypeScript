@@ -1,8 +1,6 @@
 
 ## System Screenshot
-Loading page
 ![Image1](1.png)
-List page with infinite scroll
 ![Image2](2.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
